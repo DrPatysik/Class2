@@ -10,26 +10,23 @@ fun main()
         val ifPoor = howMuchMoney in 1..99
 
         if (ifRich)
-        { println("You can buy a pizza !")
-        } else if (ifNotRich)
-        { println("You can buy a pasta ! ")
-        } else if (ifMedium)
-        { println("You can buy a hamburger !")
-        } else if (ifPoor)
-        { println("You can buy ramen !")
-        } else
-        { println( "Sorry,dude,this is not your day!")
-        }
+            { println("You can buy a pizza !") }
+        else if (ifNotRich)
+             { println("You can buy a pasta ! ") }
+        else if (ifMedium)
+            { println("You can buy a hamburger !") }
+        else if (ifPoor)
+            { println("You can buy ramen !") }
+        else
+            { println( "Sorry,dude,this is not your day!") }
         println()
 
-        println("Do you want to continue?(yes/no)")
-        val ifContinue = Scanner(System.`in`).next().toLowerCase()
-        val positive = ifContinue == "yes"
+        println("Do you want to continue?(y/n)")
+        val positive = Scanner(System.`in`).next().toLowerCase()  == "yes"
         println()
 
     }
-    while( howMuchMoney in 1 .. 1000_000 && positive
-           )
-    println("See you later!")
+    while( howMuchMoney in 1 .. 1000_000 && positive)
+        println("See you later!")
 }
 
