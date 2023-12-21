@@ -5,19 +5,19 @@ while (true)
 {
     println("How much money do you have ?")
     val howMuchMoney = Scanner(System.`in`).nextInt()
-    val rich = howMuchMoney > 500
-    val notRich = howMuchMoney in 300..500
-    val medium = howMuchMoney in 100..299
-    val poor = howMuchMoney in 0..99
+    val ifRich = howMuchMoney > 500
+    val ifNotRich = howMuchMoney in 300..500
+    val ifMedium = howMuchMoney in 100..299
+    val ifPoor = howMuchMoney in 0..99
 
 
-    if (rich)
+    if (ifRich)
     { println("You can buy a pizza !")
-    } else if (notRich)
+    } else if (ifNotRich)
     { println("You can buy a pasta ! ")
-    } else if (medium)
+    } else if (ifMedium)
     { println("You can buy a hamburger !")
-    } else if (poor)
+    } else if (ifPoor)
     { println("You can buy pamen !")
     } else
     { println("Go to foodbank !")
