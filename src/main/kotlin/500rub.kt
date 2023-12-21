@@ -16,7 +16,7 @@ fun main()
         } else if (ifMedium)
         { println("You can buy a hamburger !")
         } else if (ifPoor)
-        { println("You can buy pamen !")
+        { println("You can buy ramen !")
         } else
         { println( "Sorry,dude,this is not your day!")
         }
