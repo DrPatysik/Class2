@@ -1,22 +1,34 @@
 import java.util.*
 
-fun main() {
-    println("What is the temperature now ?")
-    val currentTemperature = Scanner(System.`in`).nextInt()
-    println("What is the time ?")
-    val currentTime = Scanner(System.`in`).nextInt()
+fun main()
+{
+    do {
+        println("What is the time ?")
+        val isDayTime = Scanner(System.`in`).nextInt() in 9..20
 
-    val isDayTime = currentTime in 9..20
-    val ifHot = currentTemperature >=28
-    val ifCold = currentTemperature <= 0
+        if ( !isDayTime )
+        {   println("Conditioner is off")
+            println( "Do you want to turn on the conditioner?(y/n)")
+        }
+        else
+        {
+            println("What is the temperature now ?")
+            val currentTemperature = Scanner(System.`in`).nextInt()
+            val ifHot = currentTemperature >= 28
+            val ifCold = currentTemperature in 0..19
 
 
-    if (ifHot && isDayTime) {
-        println("Conditioner is cooling")
-    } else if (ifCold || !isDayTime)
-    { println("Conditioner is off")
+            if (currentTemperature in 0..50)
+            {
+                if (ifHot)
+                 { println("Conditioner is cooling") }
+                 else if ( ifCold )
+                 { println(" Conditioner is warming") }
+                println("Do you want to change the temperature?(y/n)")
+            } else
+            { println("Conditioner is off") }
+        }
+    println()
     }
-    else {
-        println(" Conditioner is warming") }
-
+        while ( true )
 }
