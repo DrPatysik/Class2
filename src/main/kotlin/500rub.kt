@@ -21,12 +21,12 @@ fun main()
             { println( "Sorry,dude,this is not your day!") }
         println()
 
-        println("Do you want to continue?(y/n)")
-        val positive = Scanner(System.`in`).next().toLowerCase()  == "yes"
+        println("Do you want to continue?(yes/no)")
+        val wantContinue = Scanner(System.`in`).next().toLowerCase()
         println()
 
     }
-    while( howMuchMoney in 1 .. 1000_000 && positive)
+    while( howMuchMoney in 1 .. 1000_000 && wantContinue =="yes")
         println("See you later!")
 }
 
