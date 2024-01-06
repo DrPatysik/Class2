@@ -7,47 +7,35 @@ fun main(args: Array<String>) {
         println("Сколько секунд ?")
         val seconds = Scanner(System.`in`).nextLong()
 
-        calcDH()
+        calcDayHour()
+        val leftSeconds = seconds - howMDays(seconds)* calcDayHour().toList()[0] - howMHours(seconds) *
+                calcDayHour().toList()[1] - howMMins(seconds) * 60
 
-        println("Общее количество дней: ${howDays(scanS = seconds)} !")
-        println("Общее количество часов: ${howHours(scanS = seconds)} !")
-        println("Общее количество минут: ${howMins(scanS = seconds)} !")
-        println("Оставшееся количество секунд: ${leftSec(scanS = seconds)} !")
 
-        val agree:Boolean = question()
-    } while ( agree )
+            println("Общее количество дней: ${howMDays(seconds)} !")
+        println("Общее количество часов: ${howMHours(seconds)} !")
+        println("Общее количество минут: ${howMMins(seconds)} !")
+        println("Оставшееся количество секунд: ${leftSeconds} !")
+
+        println(" Хотите продолжить?(да/нет)")
+        val yes = Scanner(System.`in`).next().toLowerCase() == "да"
+    } while ( yes )
     println(" До свидания!")
 }
 
-fun calcDH(): Pair< Int,Int> = (24 * 60 * 60) to (60 * 60)
+fun calcDayHour(): Pair< Int,Int> = (24 * 60 * 60) to (60 * 60)
 
-    fun howDays(scanS:Long):Long
-    { val days = scanS / calcDH().toList()[0]
+    fun howMDays(scanS:Long):Long
+    { val days = scanS / calcDayHour().toList()[0]
         return days
     }
 
-    fun howHours(scanS: Long):Long
-    { val hours = (scanS % calcDH().toList()[0]) / calcDH().toList()[1]
+    fun howMHours(scanS: Long):Long
+    { val hours = (scanS % calcDayHour().toList()[0]) / calcDayHour().toList()[1]
         return hours
     }
 
-    fun howMins(scanS: Long):Long
-    { val minutes = ((scanS % calcDH().toList()[0]) % calcDH().toList()[1]) / 60
+    fun howMMins(scanS: Long):Long
+    { val minutes = ((scanS % calcDayHour().toList()[0]) % calcDayHour().toList()[1]) / 60
         return minutes
     }
-
-    fun leftSec(scanS: Long):Long
-    {val leftSeconds = scanS - howDays(scanS)* calcDH().toList()[0] - howHours(scanS) * calcDH().toList()[1] - howMins(scanS) * 60
-        return leftSeconds
-    }
-
-    fun question():Boolean
-    {  println(" Хотите продолжить?(да/нет)")
-        val yes = Scanner(System.`in`).next().toLowerCase() == "да"
-        return yes
-    }
-
-
-
-
-
