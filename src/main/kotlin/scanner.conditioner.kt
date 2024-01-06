@@ -1,34 +1,47 @@
 import java.util.*
 
+
 fun main()
 {
     do {
-        println("What is the time ?")
-        val isDayTime = Scanner(System.`in`).nextInt() in 9..20
-
-        if ( !isDayTime )
-        {   println("Conditioner is off")
-            println( "Do you want to turn on the conditioner?(y/n)")
-        }
-        else
+        val currentTime = getTime()
+        var currentTemperature = 0
+        when (currentTime)
         {
-            println("What is the temperature now ?")
-            val currentTemperature = Scanner(System.`in`).nextInt()
-            val ifHot = currentTemperature >= 28
-            val ifCold = currentTemperature in 0..19
-
-
-            if (currentTemperature in 0..50)
-            {
-                if (ifHot)
-                 { println("Conditioner is cooling") }
-                 else if ( ifCold )
-                 { println(" Conditioner is warming") }
-                println("Do you want to change the temperature?(y/n)")
-            } else
-            { println("Conditioner is off") }
+            in 9..20 -> {
+                currentTemperature = getTemperature()
+                chooseRegime(currentTemperature)
+            }
+            else -> {
+                println("Conditioner is off!  Do you want to turn on the conditioner?(yes/no)")
+                val userAnswer = Scanner(System.`in`).next().toLowerCase()
+                if (userAnswer != "yes") {
+                    break
+                }
+                currentTemperature = getTemperature()
+                chooseRegime(currentTemperature)
+            }
         }
-    println()
-    }
-        while ( true )
+    } while (currentTemperature >= 0)
+    println("See you later!")
+
 }
+ fun chooseRegime(usingTemp:Int )
+ {  when (usingTemp)
+    {   in 28..50 -> println("Conditioner is cooling")
+        in 0..19 -> println(" Conditioner is warming")
+        else -> println("Conditioner is off")
+    }
+ }
+
+ fun getTime():Int
+    { println("What is the time ?")
+        val time = Scanner(System.`in`).nextInt()
+        return time
+    }
+
+fun getTemperature():Int
+    { println("What is the temperature now?")
+        val curTemperature = Scanner(System.`in`).nextInt()
+        return  curTemperature
+    }
